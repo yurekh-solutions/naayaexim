@@ -1,7 +1,8 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
-
+import fruits from "@/assets/fruits.webp"
+import vegtable from "@/assets/Vegetables.webp"
 // const products = [
 //   { title: "Fresh Fruits", image: "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=800", path: "/products/food-products" },
 //   { title: "Vegetables", image: "https://images.unsplash.com/photo-1597362925123-77861d3fbac7?w=800", path: "/products/food-products" },
@@ -17,6 +18,8 @@ const products = [
   { title: "Namkeen", image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800", path: "/products/food-products" },
   { title: "Frozen Foods", image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=800", path: "/products/food-products" },
   { title: "Grocery Items", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800", path: "/products/food-products" },
+
+ 
 
   // ✅ More Items
   // { title: "Dairy Products", image: "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=800", path: "/products/food-products" },
@@ -36,6 +39,24 @@ const products = [
   // { title: "Confectionery", image: "https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=800", path: "/products/food-products" },
 ];
 
+ const garmentCategories = [
+    {
+      title: "Bed Sheets",
+      subcategories: ["Nutritional Value","Export Grade Certification ","Organic / Non-Organic","Storage Temperature (°C)"],
+    },
+    {
+      title: "Towels",
+      subcategories: ["Bath Towels", "Hand Towels", "Finger Towels", "Wash Cloths"],
+    },
+    {
+      title: "Jeans",
+      subcategories: ["Slim Fit Jeans", "Boot cut Jeans", "Skinny Jeans", "High Rise Jeans"],
+    },
+    {
+      title: "Cotton Products",
+      subcategories: ["Shirts", "T-shirts", "Trousers", "Tops", "Kurti", "Saree"],
+    },
+  ];
 const FoodProducts = () => {
   return (
     <div className="min-h-screen flex flex-col">
@@ -76,12 +97,47 @@ backdrop-blur-lg border border-white/50
     </a>
   </div>
 </section>
+ <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="order-2 lg:order-1">
+              <img
+                   src={fruits}
+
+                alt="Bed Sheets"
+                className="rounded-2xl shadow-2xl w-full"
+              />
+            </div>
+            <div className="order-1 lg:order-2">
+              <h2 className="text-3xl font-bold mb-6">About Fruit Products</h2>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                Fruits are good source of vitamins, dietary fiber and folate.
+India is popularly known as ‘the fruit basket of the world’. In India.
+Eating fruit provides health benefits — people who eat more fruits as part of an overall healthy diet are likely to have a reduced risk of some chronic diseases.
+Fruits provide nutrients vital for health and maintenance of your body.
+Most fruits are naturally low in fat, sodium, and calories. None have cholesterol.
+              </p>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                Most of the fruits are grown in India including mangoes, bananas, papayas, oranges, apricots, grapes, strawberries, apples, guavas, litchis, so on, and so forth.
+Therefore, fruits export from India has been on the rise for a few decades. The export of fruits from India was around 372213.73 Metric tones in the year 2018-2019.
+              </p>
+              <div className="grid grid-cols-2 gap-4 mt-8">
+                {garmentCategories[0].subcategories.map((sub) => (
+                  <div key={sub} className="glass-card p-4 rounded-lg text-center">
+                    <p className="font-medium">{sub}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="glass-card p-8 rounded-2xl mb-12">
-            <h2 className="text-3xl font-bold mb-6">About Our Food Products</h2>
+            <h2 className="text-3xl font-bold mb-6">About Our Fruits Products</h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-              NaayaExim offers a wide range of food products including fresh fruits and vegetables, premium spices, 
+              NaayaExim offers a wide range of fruits products including fresh fruits and vegetables, premium spices, 
               grocery essentials, and frozen foods. We maintain strict quality control measures to ensure that all 
               products meet international food safety standards.
             </p>
@@ -91,7 +147,7 @@ backdrop-blur-lg border border-white/50
             </p>
           </div>
 
-          <h2 className="text-3xl font-bold mb-8 text-center">Product Categories</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">Food Categories</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product) => (
               <ProductCard key={product.title} {...product} />
@@ -99,7 +155,65 @@ backdrop-blur-lg border border-white/50
           </div>
         </div>
       </section>
+ <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
+             <div className="order-1 lg:order-2">
+              <h2 className="text-3xl font-bold mb-6">About Vegetable Products</h2>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+ Vegetables Excellent source of vitamins. Good source of dietary fiber and folate.
+All vegetables contain healthful vitamins, minerals, and fiber. However, some stand out for their exceptional health benefits.
+Including vegetables as part of a healthy eating pattern can reduce the risk of some chronic diseases, including heart disease and type 2 diabetes, as well stroke and cancer.
+              </p>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                Vegetables are an important part of a healthy eating pattern and are excellent sources of many nutrients, including potassium, fiber, folate (folic acid) and vitamins A, E and C.
+Many vegetables are included in the export of vegetables from India like Onion, Broccoli, Brinjal, Spinach, cabbage, Green chilies so on, and so forth.
+ 
+              </p>
+              <div className="grid grid-cols-2 gap-4 mt-8">
+                {garmentCategories[0].subcategories.map((sub) => (
+                  <div key={sub} className="glass-card p-4 rounded-lg text-center">
+                    <p className="font-medium">{sub}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="order-2 lg:order-1">
+              <img
+                   src={vegtable}
+
+                alt="Bed Sheets"
+                className="rounded-2xl shadow-2xl w-full"
+              />
+            </div>
+           
+          </div>
+        </div>
+      </section>
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="glass-card p-8 rounded-2xl mb-12">
+            <h2 className="text-3xl font-bold mb-6">About Our Fruits Products</h2>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+              NaayaExim offers a wide range of fruits products including fresh fruits and vegetables, premium spices, 
+              grocery essentials, and frozen foods. We maintain strict quality control measures to ensure that all 
+              products meet international food safety standards.
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Our food products are sourced directly from trusted farmers and manufacturers, ensuring freshness, 
+              quality, and competitive pricing for our global clients.
+            </p>
+          </div>
+
+          <h2 className="text-3xl font-bold mb-8 text-center">Food Categories</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.map((product) => (
+              <ProductCard key={product.title} {...product} />
+            ))}
+          </div>
+        </div>
+      </section>
       <Footer />
     </div>
   );

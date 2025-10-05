@@ -170,14 +170,15 @@
 // };
 
 // export default Header;
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import logo from "@/assets/naaya-exim-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const productCategories = [
     { name: "Food Products", path: "/products/food-products" },
@@ -191,17 +192,29 @@ const Header = () => {
     { name: "Packaging Products", path: "/products/packaging-products" },
   ];
 
+  // ✅ Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-border">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="NaayaExim" className="h-12 w-auto" />
+            <img src={logo} alt="NaayaExim" className="h-12 w-auto " /> <span className="text-xl font-bold text-[#ff6300]"> NAAYA</span> 
+            <span className="text-xl font-bold text-primary"> EXIM</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-14">
             <Link to="/" className="text-sm font-medium hover:text-accent">
               HOME
             </Link>
@@ -217,23 +230,32 @@ const Header = () => {
               SOURCING AGENT
             </Link>
 
-            {/* Products Dropdown */}
+            {/* ✅ Products Dropdown */}
             <div
-              className="relative"
-              onMouseEnter={() => setActiveDropdown("products")}
-              onMouseLeave={() => setActiveDropdown(null)}
+             
             >
-              <button className="flex items-center gap-1 text-sm font-medium hover:text-accent transition">
-                PRODUCTS <ChevronDown className="h-4 w-4" />
+              <button
+                onClick={() => setDropdownOpen((prev) => !prev)}
+                className="flex items-center gap-1 text-sm font-medium hover:text-accent transition"
+              >
+                PRODUCTS
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform duration-200 ${
+                    dropdownOpen ? "rotate-180" : ""
+                  }`}
+                />
               </button>
 
-              {activeDropdown === "products" && (
-                <div className="absolute top-full left-0 mt-2 w-56 bg-white shadow-lg rounded-md py-2 border border-gray-200">
+              {dropdownOpen && (
+                <div
+                  className="absolute top-full left-70 mt-2 w-56 bg-white shadow-lg rounded-md py-2 border border-gray-200 z-50 transition-all duration-200"
+                >
                   {productCategories.map((category) => (
                     <Link
                       key={category.path}
                       to={category.path}
                       className="flex justify-between items-center px-4 py-2 text-sm hover:bg-accent/10 hover:text-accent transition"
+                      onClick={() => setDropdownOpen(false)} // close on click
                     >
                       {category.name}
                       <ChevronRight className="h-3 w-3 opacity-70" />
@@ -243,10 +265,7 @@ const Header = () => {
               )}
             </div>
 
-            <Link
-              to="/contact"
-              className="text-sm font-medium hover:text-accent"
-            >
+            <Link to="/contact" className="text-sm font-medium hover:text-accent">
               CONTACT US
             </Link>
           </nav>
@@ -279,25 +298,24 @@ const Header = () => {
             {/* Mobile Dropdown */}
             <div>
               <button
-                onClick={() =>
-                  setActiveDropdown(activeDropdown === "products" ? null : "products")
-                }
+                onClick={() => setDropdownOpen((prev) => !prev)}
                 className="flex items-center justify-between w-full py-2 text-sm font-medium hover:text-accent"
               >
                 PRODUCTS
                 <ChevronDown
                   className={`h-4 w-4 transition-transform ${
-                    activeDropdown === "products" ? "rotate-180" : ""
+                    dropdownOpen ? "rotate-180" : ""
                   }`}
                 />
               </button>
-              {activeDropdown === "products" && (
+              {dropdownOpen && (
                 <div className="pl-4 border-l border-gray-200 mt-2">
                   {productCategories.map((category) => (
                     <Link
                       key={category.path}
                       to={category.path}
                       className="flex justify-between items-center py-2 pr-2 text-sm hover:text-accent"
+                      onClick={() => setIsMenuOpen(false)}
                     >
                       {category.name}
                       <ChevronRight className="h-3 w-3 opacity-70" />
@@ -321,3 +339,4 @@ const Header = () => {
 };
 
 export default Header;
+

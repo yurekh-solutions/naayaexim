@@ -44,16 +44,16 @@ const SourcingAgent = () => {
 
 <section className="relative min-h-[60vh] flex items-center justify-center text-white text-center overflow-hidden">
   {/* Background image */}
-  <div className="absolute inset-0 bg-[url('/src/assets/hero-logistics.jpg')] bg-cover bg-center" />
+  <div className="absolute inset-0 bg-[url('/src/assets/12.png')] bg-cover bg-center" />
 
   {/* Blackish transparent overlay */}
-  <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+  <div className="absolute inset-0 bg-black/60 backdrop-blur-xs" />
 
   <div className="container relative z-10 mx-auto px-4">
-    <h2 className="text-4xl md:text-6xl font-bold mb-6">
+    <h2 className="text-4xl md:text-6xl  text-white font-bold mb-6">
      Sourcing Agent Services
     </h2>
-    <p className="text-lg md:text-xl opacity-90 mb-8 max-w-2xl mx-auto">
+    <p className="text-lg md:text-xl opacity-90 mb-8 text-gray-200 max-w-2xl mx-auto">
                   Your trusted partner for efficient and reliable product sourcing from India
 
     </p>

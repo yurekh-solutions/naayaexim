@@ -1,8 +1,15 @@
+import { motion, useInView } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GlassCard from "@/components/GlassCard";
+import naayatradeLogo from "@/assets/Naayatradelogo.png";
+import { Button } from "@/components/ui/button";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import yuvi from "@/assets/yuvi.png";
 
-import { Award, Globe, Users, TrendingUp, Shield, Zap  } from "lucide-react";
+import { Award, Globe, Users, TrendingUp, Shield, Zap , ExternalLink } from "lucide-react";
 
 const About = () => {
     const stats = [
@@ -11,22 +18,25 @@ const About = () => {
     { icon: Award, value: "15+", label: "Years Experience" },
     { icon: TrendingUp, value: "99%", label: "Success Rate" },
   ];
+    const naayatradeRef = useRef(null);
+  const isNaayatradeInView = useInView(naayatradeRef, { once: true, margin: "-100px" });
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       
 <section className="relative min-h-[60vh] flex items-center justify-center text-white text-center overflow-hidden">
   {/* Background image */}
-  <div className="absolute inset-0 bg-[url('/src/assets/gallery.png')] bg-cover bg-center" />
+  <div className="absolute inset-0 bg-[url('/src/assets/16.png')] bg-cover bg-center" />
 
   {/* Blackish transparent overlay */}
-  <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+  <div className="absolute inset-0 bg-black/60 backdrop-blur-xs" />
 
   <div className="container relative z-10 mx-auto px-4">
-    <h2 className="text-4xl md:text-6xl font-bold mb-6">
+    <h2 className="text-4xl md:text-6xl  text-white font-bold mb-6">
       Ready to Grow with Us?
     </h2>
-    <p className="text-lg md:text-xl opacity-90 mb-8 max-w-2xl mx-auto">
+    <p className="text-lg md:text-xl opacity-90 mb-8  text-gray-200 max-w-2xl mx-auto">
       Let’s connect and make your international trade journey seamless.
     </p>
     <a
@@ -47,7 +57,7 @@ backdrop-blur-lg border border-white/50
           <div className="glass-card p-8 md:p-12 rounded-2xl mb-12">
             <h2 className="text-3xl font-bold mb-6">Our Story</h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-              NaayaExim is a leading export-import company based in Ahmedabad, Gujarat, India. We specialize in 
+              NaayaExim is a leading export-import company based in India. We specialize in 
               connecting global markets with premium Indian products across multiple categories including garments, 
               leather products, handicrafts, food products, and more.
             </p>
@@ -150,6 +160,81 @@ backdrop-blur-lg border border-white/50
               );
             })}
           </div>
+<section ref={naayatradeRef} className="py-16 lg:py-20 overflow-hidden">
+  <div className="container mx-auto px-4">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* Left Side - Content */}
+      <div className="space-y-6 order-2 lg:order-1">
+        <h2 className="text-3xl lg:text-3xl font-bold mb-4">
+          <span className="">
+           NaayaExim, a proud division of Naayatrade
+          </span>
+        </h2>
+
+        <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
+         NaayaExim proudly operates as part of Naayatrade, the world’s emerging powerhouse in global wholesale and digital trade. This association reflects our steadfast commitment to delivering the same excellence, innovation, and forward-thinking approach that define Naayatrade.
+        </p>
+
+        <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
+         By drawing on Naayatrade’s expertise in building scalable marketplaces, supply chain networks, and cutting-edge digital ecosystems, NaayaExim serves as a trusted import-export partner—connecting global markets and delivering unmatched value to businesses worldwide.
+        </p>
+
+        <div className="pt-4">
+          <Button
+            variant="outline"
+            size="lg"
+            className="glass-morphism border-primary/30 text-primary hover:bg-primary/10 rounded-full text-lg px-6 py-3 group"
+            onClick={() => window.open('https://naayatrade.com/', '_blank')}
+          >
+            <ExternalLink className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" />
+            Know More
+          </Button>
+        </div>
+      </div>
+
+      {/* Right Side - NaayaExim Logo and Branding */}
+      <div className="relative order-1 lg:order-2">
+        <GlassCard variant="premium" className="p-8 lg:p-12 text-center">
+          <div className="relative mb-6">
+            <div className="w-32 h-32 lg:w-40 lg:h-40 mx-auto mb-6 relative">
+              <img
+                src={ yuvi }
+                alt="NaayaExim Logo"
+                className="w-full h-full  object-contain"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-accent/30 rounded-full blur-xl" />
+            </div>
+          </div>
+
+          <h3 className="text-2xl lg:text-3xl font-bold mb-4">
+            <span className="text-orange-500 ">
+              NAAYATRADE
+            </span>
+          </h3>
+
+          <p className="text-muted-foreground text-sm lg:text-base mb-6">
+           Global Wholesale & Digital Trade Platform
+          </p>
+
+          <div className="grid grid-cols-2 gap-4 text-center">
+            <div className="space-y-2">
+              <div className="text-2xl font-bold text-primary">
+                <AnimatedCounter end={50} suffix="+" />
+              </div>
+              <p className="text-xs text-muted-foreground">Countries</p>
+            </div>
+            <div className="space-y-2">
+              <div className="text-2xl font-bold text-primary">
+                <AnimatedCounter end={10000} suffix="+" />
+              </div>
+              <p className="text-xs text-muted-foreground">Trade Partners</p>
+            </div>
+          </div>
+        </GlassCard>
+      </div>
+    </div>
+  </div>
+</section>
 
           {/* Why Choose Us Section */}
           <div>

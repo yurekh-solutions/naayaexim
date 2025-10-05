@@ -69,16 +69,16 @@ const handleSubmit = (e: React.FormEvent) => {
       </section> */}
       <section className="relative min-h-[60vh] flex items-center justify-center text-white text-center overflow-hidden">
   {/* Background image */}
-  <div className="absolute inset-0 bg-[url('/src/assets/contact.png')] bg-cover bg-center" />
+  <div className="absolute inset-0 bg-[url('/src/assets/product.png')] bg-cover bg-center" />
 
   {/* Blackish transparent overlay */}
-  <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+  <div className="absolute inset-0 bg-black/60 backdrop-blur-xs " />
 
   <div className="container relative z-10 mx-auto px-4">
-    <h2 className="text-4xl md:text-6xl font-bold mb-6">
+    <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
      Contact Us
     </h2>
-    <p className="text-lg md:text-xl opacity-90 mb-8 max-w-2xl mx-auto">
+    <p className="text-lg md:text-xl opacity-90 mb-8 max-w-2xl mx-auto text-gray-200">
                     Let's discuss how we can help your business grow globally
 
     </p>
@@ -147,7 +147,7 @@ backdrop-blur-lg border border-white/50
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Sunday</span>
-                    <span className="font-medium">10:00 AM - 3:00 PM</span>
+                    <span className="font-medium">Closed</span>
                   </div>
                 </div>
               </GlassCard>
@@ -242,8 +242,38 @@ backdrop-blur-lg border border-white/50
                   </Button>
                 </form>
               </GlassCard>
+               <div className="mt-6 p-4 bg-primary/5 rounded-lg border border-primary/20">
+                    <p className="text-sm font-medium text-primary mb-2">24/7 Emergency Support</p>
+                    <p className="text-xs text-muted-foreground">
+                      For urgent platform needs, our AI-powered system and emergency team are available round the clock.
+                    </p>
+                  </div>
             </div>
+            
           </div>
+            <GlassCard variant="premium" className="p-4 md:p-6 mt-6">
+                  <h3 className="text-xl font-semibold text-foreground mb-6">Find Us</h3>
+                  
+                  <div className="rounded-lg overflow-hidden">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.0234589394357!2d72.8241995759203!3d19.056699552892843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ce40f07dc9a1%3A0x2540418065ef0594!2sHill%20View%20Building%2C%20302%2C%202%2C%20Hill%20Rd%2C%20W%2C%20Bandra%20West%2C%20Mumbai%2C%20Maharashtra%20400050!5e0!3m2!1sen!2sin!4v1696150000000!5m2!1sen!2sin"
+                      width="100%"
+                      height="200"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="rounded-lg"
+                    />
+                  </div>
+                  
+                  <div className="mt-4 p-4 bg-primary/5 rounded-lg border border-primary/20">
+                    <p className="text-sm font-medium text-primary mb-2">Office Address</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Hill View Building, 302, 2, Hill Rd, W, Bandra West, Mumbai, Maharashtra 400050
+                    </p>
+                  </div>
+                </GlassCard>
         </div>
       </section>
 

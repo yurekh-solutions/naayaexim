@@ -15,6 +15,7 @@ import heroLogistics from "@/assets/hero-logistics.jpg";
 import heroSpices from "@/assets/hero-spices.jpg";
 import gallery from "@/assets/gallery.png";
 import product from  "@/assets/product.png";
+import furniture from "@/assets/Furniture.webp"
 import heroFurniture from "@/assets/hero-furniture.jpg";
 import Marquee from "@/components/Marquee";
 import apedaLogo from "@/assets/certifications/apeda.png";
@@ -84,7 +85,7 @@ const Index = () => {
       subtitle: "Premium Quality Worldwide",
     },
     {
-      image: heroFurniture,
+      image: furniture,
       title: "We Export Furniture Products",
       subtitle: "Crafted with Excellence",
     },
