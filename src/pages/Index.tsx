@@ -371,12 +371,7 @@ const Index = () => {
                 <p className="text-sm text-muted-foreground mb-4">
                   {product.description}
                 </p>
-                <Link
-                  to="/products"
-                  className="inline-flex items-center text-accent hover:text-accent/80 transition-colors text-sm font-medium"
-                >
-                  Learn More <ArrowRight size={16} className="ml-2" />
-                </Link>
+                
               </div>
             ))}
           </div>
